@@ -4,7 +4,7 @@
 // This data source hold arrays of information on friends
 // ===============================================================================
 
- var friendData = require("../data/friends.js");
+ var friends = require("../data/friends.js");
 
 
 // ===============================================================================
@@ -19,7 +19,7 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.get("/api/friends", function(req, res) {
-    res.json(friendData);
+    res.json(friends);
   });
 
   
@@ -48,16 +48,17 @@ module.exports = function(app) {
       var userScores = newUser.score;
       var totalDifference;
 
-      for (var i = 0; i < [friends].length - 1; i++){
+      for (var i = 0; i < friends.length - 1; i++){
           console.log(friends[i].name);
           totalDifference = 0;
 
           for (var j = 0; j < 10; j++) {
             totalDifference += Math.abs(parseInt(userScores)- parseInt(friends[i].scores[j]));
-            if (totalDifference <= greatMatch.matchDifference){
+            if (totalDifference <= bestMatch.matchDifference){
               bestMatch.name = friends[i].name;
               bestMatch.image = friends[i].image;
               bestMatch.matchDifference = totalDifference;
+              console.log(totalDifference);
             }
           }
       }
@@ -66,7 +67,9 @@ module.exports = function(app) {
       
       
       
-      friendData.push(newUser);
+      friends.push(newUser);
+
+      friends.push(bestMatch);
 
       res.json(bestMatch);
       
