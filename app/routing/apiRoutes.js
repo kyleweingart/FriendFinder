@@ -5,6 +5,7 @@
 // ===============================================================================
 
  var friends = require("../data/friends.js");
+ var path = require("path");
 
 
 // ===============================================================================
@@ -35,31 +36,51 @@ module.exports = function(app) {
   app.post("/api/friends", function(req, res) {
     // Note the code here. Our "server" will respond to requests and let users know who there best friend match is.
     // req.body is available since we're using the body-parser middleware
-      var newUser = (req.body);
+
+
+
+      
       
       var bestMatch = {
         name: "",
         image: "",
         matchDifference:500
       };
-
-      var userName = newUser.name;
-      var userImage = newUser.image;
-      var userScores = newUser.score;
+      var userData = (req.body);
+      var userName = userData.name;
+      var userImage = userData.image;
+      // need to work on user scores - var is undefined
+      var userScores = userData.score;
       var totalDifference;
 
-      for (var i = 0; i < friends.length - 1; i++){
+      for (var i = 0; i < friends.length; i++){
           console.log(friends[i].name);
           totalDifference = 0;
+          console.log(totalDifference);
 
           for (var j = 0; j < 10; j++) {
-            totalDifference += Math.abs(parseInt(userScores)- parseInt(friends[i].scores[j]));
-            if (totalDifference <= bestMatch.matchDifference){
-              bestMatch.name = friends[i].name;
-              bestMatch.image = friends[i].image;
-              bestMatch.matchDifference = totalDifference;
-              console.log(totalDifference);
-            }
+            console.log("we here");
+            console.log(parseInt(friends[i].scores[j]));
+            // console.log(parseInt(userScores[j]));
+            console.log(userScores);
+            // totalDifference += Math.abs(parseInt(userScores)- parseInt(friends[i].scores[j]));
+            // console.log(totalDifference);
+            // if (totalDifference <= bestMatch.matchDifference){
+            //   bestMatch.name = friends[i].name;
+            //   bestMatch.image = friends[i].image;
+            //   bestMatch.matchDifference = totalDifference;
+            //   console.log(totalDifference);
+          // }
+          }
+
+          if (totalDifference <= bestMatch.matchDifference){
+
+            console.log("we getting there");
+            //   bestMatch.name = friends[i].name;
+            //   bestMatch.image = friends[i].image;
+            //   bestMatch.matchDifference = totalDifference;
+            //   console.log(totalDifference);
+          // }
           }
       }
 
@@ -67,9 +88,9 @@ module.exports = function(app) {
       
       
       
-      friends.push(newUser);
+      friends.push(userData);
 
-      friends.push(bestMatch);
+      // friendData.push(bestMatch);
 
       res.json(bestMatch);
       
