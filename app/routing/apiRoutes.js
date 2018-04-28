@@ -43,45 +43,33 @@ module.exports = function(app) {
       
       var bestMatch = {
         name: "",
-        image: "",
+        photo: "",
         matchDifference:500
       };
       var userData = (req.body);
       var userName = userData.name;
-      var userImage = userData.image;
-      // need to work on user scores - var is undefined
-      var userScores = userData.score;
+      var userPhoto = userData.photo;
+      var userScores = userData.scores;
       var totalDifference;
 
       for (var i = 0; i < friends.length; i++){
           console.log(friends[i].name);
           totalDifference = 0;
-          console.log(totalDifference);
-
           for (var j = 0; j < 10; j++) {
-            console.log("we here");
-            console.log(parseInt(friends[i].scores[j]));
-            // console.log(parseInt(userScores[j]));
-            console.log(userScores);
-            // totalDifference += Math.abs(parseInt(userScores)- parseInt(friends[i].scores[j]));
-            // console.log(totalDifference);
-            // if (totalDifference <= bestMatch.matchDifference){
-            //   bestMatch.name = friends[i].name;
-            //   bestMatch.image = friends[i].image;
-            //   bestMatch.matchDifference = totalDifference;
-            //   console.log(totalDifference);
-          // }
+            
+            totalDifference += Math.abs(parseInt(userScores[j])- parseInt(friends[i].scores[j]));
+            
+            
           }
-
           if (totalDifference <= bestMatch.matchDifference){
+            bestMatch.name = friends[i].name;
+            bestMatch.photo = friends[i].photo;
+            bestMatch.matchDifference = totalDifference;
+            console.log(bestMatch);
 
-            console.log("we getting there");
-            //   bestMatch.name = friends[i].name;
-            //   bestMatch.image = friends[i].image;
-            //   bestMatch.matchDifference = totalDifference;
-            //   console.log(totalDifference);
-          // }
           }
+
+          
       }
 
       
@@ -90,7 +78,7 @@ module.exports = function(app) {
       
       friends.push(userData);
 
-      // friendData.push(bestMatch);
+      
 
       res.json(bestMatch);
       
