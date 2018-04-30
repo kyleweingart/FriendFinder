@@ -9,7 +9,7 @@ var friends = [
   {
     name: "John",
     photo:
-      "http://img2.rnkr-static.com/list_img_v2/3209/283209/full/a-list-of-famous-john-lennon-quotes-u4.jpg",
+      "http://ajournalofmusicalthings.com/wp-content/uploads/2016/06/John-Lennon-in-1970.jpg",
     scores: ["4", "1", "4", "4", "2", "1", "2", "5", "2", "1"]
   },
 
