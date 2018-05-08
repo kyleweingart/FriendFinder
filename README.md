@@ -2,12 +2,12 @@
 
 ## Description
 
-*Friend Finder* implements friend matching based on the user's responses to a ten question survey. The user responds to questions with values from 1 (Strongly Disagree) to 5 (Strongly Agree). When the survey is submitted, an existing user record closest to the current user's responses is found and returned. The closest set of user responses is defined as the set with the lowest absolute difference for all ten questions combined.
+*Friend Finder* is a compatability based friend finding app. The user responds to a set of ten questions with values from 1 (Strongly Disagree) to 5 (Strongly Agree). The app takes in results from the user surveys and then compares the answers with those from other users to find the best overall friend match. The app then displays the name and picture of the best overall match. 
 
-*Friend Finder* application is meant to simulate a simple dating app. The application is implemented using a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) server on the back end and the [Bootstrap](https://getbootstrap.com/) CSS framework on the front end.
+The application is built using a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) server on the back end and the [Bootstrap](https://getbootstrap.com/) CSS framework on the front end.
 
 ## Demo
 	
-*Friend Finder* is deployed to Heroku. Please check it out [here](https://limitless-forest-66084.herokuapp.com/).
+Check it out [here](https://limitless-forest-66084.herokuapp.com/).
 
 
